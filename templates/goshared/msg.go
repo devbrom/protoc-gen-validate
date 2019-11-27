@@ -159,6 +159,7 @@ func (m {{ (msgTyp .).Pointer }}) ValidateAll() error {
 {{ cmt (errname .) " is the validation error returned by " (msgTyp .) ".Validate if the designated constraints aren't met." -}}
 type {{ errname . }} struct {
 	field  string
+	rules  map[string]interface{}
 	reason string
 	cause  error
 	key    bool
@@ -166,6 +167,9 @@ type {{ errname . }} struct {
 
 // Field function returns field value.
 func (e {{ errname . }}) Field() string { return e.field }
+
+// Rules function returns rules value
+func (e {{ errname . }}) Rules() map[string]interface{} { return e.rules }
 
 // Reason function returns reason value.
 func (e {{ errname . }}) Reason() string { return e.reason }
@@ -214,6 +218,7 @@ var _ error = {{ errname . }}{}
 
 var _ interface{
 	Field() string
+	Rules() map[string]interface{}
 	Reason() string
 	Key() bool
 	Cause() error
