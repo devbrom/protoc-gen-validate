@@ -3,13 +3,13 @@ package goshared
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/envoyproxy/protoc-gen-validate/validate"
+	"github.com/devbrom/protoc-gen-validate/validate"
 	"github.com/iancoleman/strcase"
 	"reflect"
 	"strings"
 	"text/template"
 
-	"github.com/envoyproxy/protoc-gen-validate/templates/shared"
+	"github.com/devbrom/protoc-gen-validate/templates/shared"
 	"github.com/golang/protobuf/ptypes"
 	"github.com/golang/protobuf/ptypes/duration"
 	"github.com/golang/protobuf/ptypes/timestamp"
