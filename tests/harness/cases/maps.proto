@@ -23,6 +23,8 @@ message MapValues { map<string, string> val = 1 [(validate.rules).map.values.str
 message MapKeysPattern   { map<string, string> val = 1 [(validate.rules).map.keys.string.pattern = "(?i)^[a-z0-9]+$"]; }
 message MapValuesPattern { map<string, string> val = 1 [(validate.rules).map.values.string.pattern = "(?i)^[a-z0-9]+$"]; }
 
+message MapExactIgnore  { map<uint64,string> val = 1 [(validate.rules).map = {min_pairs: 3, max_pairs: 3, ignore_empty: true}]; }
+
 message MapRecursive {
     map<uint32, Msg> val = 1;
     message Msg {
