@@ -3,6 +3,10 @@ package cc
 const mapTpl = `
 	{{ $f := .Field }}{{ $r := .Rules }}
 
+	{{if .Rules.GetIgnoreEmpty}}
+		if ({{accessor .}}.size() > 0) {
+	{{end}}
+
 	{{ if $r.GetMinPairs }}
 		{
 		const auto size = {{ accessor . }}.size();
@@ -45,4 +49,8 @@ const mapTpl = `
 			{{ unimplemented "no_sparse validation is not implemented for C++ because protobuf maps cannot be sparse in C++" }}
 		{{ end }}
 	{{ end }}
+
+	{{if .Rules.GetIgnoreEmpty}}
+		}
+	{{end}}
 `

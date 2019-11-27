@@ -2,6 +2,11 @@ package cc
 
 const strTpl = `
 	{{ $f := .Field }}{{ $r := .Rules }}
+
+	{{if .Rules.GetIgnoreEmpty}}
+		if ({{accessor .}} != "") {
+	{{end}}
+
 	{{ template "const" . }}
 	{{ template "in" . }}
 	{{ if or $r.Len (and $r.MinLen $r.MaxLen (eq $r.GetMinLen $r.GetMaxLen)) }}
@@ -183,4 +188,8 @@ const strTpl = `
 	}
 	*/}}
 	{{ end }}
+
+	{{if .Rules.GetIgnoreEmpty}}
+		}
+	{{end}}
 `
